@@ -1,0 +1,37 @@
+@font-face {
+	font-family: 'Lora';
+	src: url(fuentes/Lora-Regular.ttf);
+	font-weight: normal;
+}
+@font-face {
+	font-family: 'Lora Italic';
+	src: url(fuentes/Lora-Italic.ttf);
+	font-weight: light;
+}
+
+@font-face {
+	font-family: 'Aleo';
+	src: url(fuentes/Aleo-regular.otf);
+	
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	src: url(fuentes/OpenSans-Regular.ttf);
+	font-weight: normal;
+
+}
+
+@font-face {
+	font-family: 'Open Sans Semibold';
+	src: url(fuentes/OpenSans-Semibold.ttf);
+
+}
+
+@font-face {
+	font-family: 'Open Sans Bold';
+	src: url(fuentes/OpenSans-Bold.ttf);
+	font-weight: bold;
+}
+
+
