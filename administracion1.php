@@ -109,7 +109,7 @@ if(isset($_SESSION['nombre_usuario']))
 
 	</div>
 	
-	<a href="administracion2.html" class="btn btn-success navbar-btn" style="float:center" role="button">Siguiente</a>
+	<a href="administracion2.php" class="btn btn-success navbar-btn" style="float:center" role="button">Siguiente</a>
 
 	
 </section>
