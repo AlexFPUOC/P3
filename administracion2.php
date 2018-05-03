@@ -1,4 +1,5 @@
-<?php include("conexion.php"); 
+<?php include("conexion.php");
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,7 +79,9 @@
 			<form action="menos_rss.php" method="post">
 					SELECCIONA RSS&nbsp;&nbsp;&nbsp;<select name="rss2" style="text-align: center; width: 60%; margin: 0px auto;border-radius: 10px 10px 10px 10px;moz-border-radius: 10px 10px 10px 10px;webkit-border-radius:10px 10px 10px 10px;border: 1px solid #000000;">
                 <option value="" selected>Seleccione el canal que desee eliminar</option>
-                <?php $querycanales="SELECT DISTINCT link FROM noticias";
+                <?php 
+		$nombre_sesion=$_SESSION['nombre_usuario'];
+		$querycanales="SELECT DISTINCT link FROM noticias WHERE noticias.usuario = (SELECT codigo FROM usuario WHERE nombre_usuario='$nombre_sesion')";
                 $conectcanales=$conectar->prepare($querycanales);
                 $conectcanales->execute();
                 $conectcanales->bind_result($canales2);
