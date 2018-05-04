@@ -48,6 +48,7 @@ if(!$borrar){
 	echo "Error ocurrido al eliminar datos en el sistema. Contacte con el administrador.";
 }else{
 	echo "<p style='text-align: center; padding-top: 50px;'>Datos eliminados correctamente. <a href='index.html'>Volver</a></p>";
+	header("Location: cerrar.php");
 
 	
 }
