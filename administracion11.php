@@ -38,20 +38,21 @@ include("conexion.php");
 	
 $nombre_sesion=$_SESSION['nombre_usuario'];
 $borrar="DELETE FROM usuario WHERE nombre_usuario='$nombre_sesion'";
+$borrar2="DELETE FROM noticias WHERE usuario= (SELECT codigo FROM usuario WHERE nombre_usuario='$nombre_sesion')";
 
-
-$ejecutar=mysqli_query($conectar, $borrar);	
-
-mysqli_close($conectar);
-
-if(!$borrar){
+if (!$ejecutar2=mysqli_query($conectar, $borrar2)) {
+    echo "Error ocurrido al eliminar datos de canales en el sistema. Contacte con el administrador.";
+} else {
+    echo "<p style='text-align: center; padding-top: 50px;'>Datos de canal eliminados correctamente.</p>";
+     // mysqli_close($conectar);    
+}
+if(!$ejecutar=mysqli_query($conectar, $borrar)){
 	echo "Error ocurrido al eliminar datos en el sistema. Contacte con el administrador.";
 }else{
-	echo "<p style='text-align: center; padding-top: 50px;'>Datos eliminados correctamente. <a href='index.html'>Volver</a></p>";
-	header("Location: cerrar.php");
-
-	
+	echo "<p style='text-align: center; padding-top: 50px;'>Datos de usuario eliminados correctamente. <a href='cerrar.php'>Volver</a>";
+    mysqli_close($conectar);
 }
 
 	
 }
+?>
