@@ -88,7 +88,11 @@ if(isset($_SESSION['username']))
 			
 	</div>
 	
+<<<<<<< HEAD
 	<a href="administracion2.php" class="btn btn-success navbar-btn" style="float:center" role="button">Actualizar RSS</a>
+=======
+	<a href="administracion2.html" class="btn btn-success navbar-btn" style="float:center" role="button">Actualizar RSS</a>
+>>>>>>> bad99e93c717bdb77a875a6d3b43d61e91bbdd3c
 
 	
 </section>
@@ -120,3 +124,4 @@ if(isset($_SESSION['username']))
 		echo "Acceso denegado";
 	}
 
+?>
