@@ -21,12 +21,12 @@ $resultado=mysqli_query($conectar, $sql);
 $mostrar=mysqli_fetch_array($resultado);
 	
 if($mostrar['username']==$email){
-	echo "<p style='text-align: center; padding-top: 50px;'>Nombre de usuario registrado, introduzca otro. <a href='administracion1.php'>Volver</a></p>";
+	echo "<p style='text-align: center; padding-top: 50px;'>Nombre de usuario registrado, introduzca otro. <br><a href='administracion1.php'>Volver</a></p>";
 }else{
 
 	mysqli_query($conectar, $actualizar);
 	
-	echo "<p style='text-align: center; padding-top: 50px;'>Datos actualizados correctamente. <a href='administracion1.php'>Volver</a></p>";
+	echo "<p style='text-align: center; padding-top: 50px;'>Datos actualizados correctamente. <br><a href='administracion1.php'>Volver</a></p>";
 }
 mysqli_close($conectar);
 }
@@ -49,7 +49,7 @@ if (!$ejecutar2=mysqli_query($conectar, $borrar2)) {
 if(!$ejecutar=mysqli_query($conectar, $borrar)){
 	echo "Error ocurrido al eliminar datos en el sistema. Contacte con el administrador.";
 }else{
-	echo "<p style='text-align: center; padding-top: 50px;'>Datos de usuario eliminados correctamente. <a href='cerrar.php'>Volver</a>";
+	echo "<p style='text-align: center; padding-top: 50px;'>Datos de usuario eliminados correctamente. <br><a href='cerrar.php'>Volver</a>";
     mysqli_close($conectar);
 }
 
