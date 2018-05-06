@@ -82,9 +82,9 @@ session_start();
 	<center>
 	<table>
 	<tr>
-        <?php $querypais="SELECT DISTINCT pais FROM noticias";
-            $querynombre="SELECT DISTINCT nombre FROM noticias";
-            $querycategoria="SELECT DISTINCT categoria FROM noticias";
+        <?php $querypais="SELECT DISTINCT pais FROM noticias WHERE noticias.usuario = (SELECT codigo FROM usuario WHERE nombre_usuario='$username')";
+            $querynombre="SELECT DISTINCT nombre FROM noticias WHERE noticias.usuario = (SELECT codigo FROM usuario WHERE nombre_usuario='$username')";
+            $querycategoria="SELECT DISTINCT categoria FROM noticias WHERE noticias.usuario = (SELECT codigo FROM usuario WHERE nombre_usuario='$username')";
             $conectpais=$conectar->prepare($querypais);
         $conectpais->execute();
             $conectpais->bind_result($pais2);
