@@ -28,3 +28,24 @@
     max-width: 100%;
     height: auto;
 }
+
+.form-control {
+    background-color:#8A0808;
+	color: white;
+}
+
+.form-control-selected {
+  background-color: red;
+}
+
+table {
+    width: 100%;
+	border-spacing: 5px;
+	border-collapse: separate;
+}
+
+td {
+    vertical-align: center; 
+
+}
+

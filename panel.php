@@ -18,6 +18,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="css/panel.css" />
   
 </head>
+
 <body>
 
 <header>
@@ -53,10 +54,10 @@ session_start();
 			  <li  class="active"><a href="panel.php">Noticias</a></li>
 			  <li><a href="administracion1.php">Administración</a></li>
 			</ul>
-			<a href="login.html" class="btn btn-success navbar-btn" style="float:right" role="button">Login</a>
-                <?php if (isset($_SESSION['nombre_usuario']) && !empty($_SESSION['nombre_usuario'])) { ?>
-        <a href="cerrar.php" class="btn btn-danger navbar-btn" style="float:right" role="button">Logout</a>
-<?php }
+			<a href="login.html" class="btn btn-success navbar-btn" style="float:right" role="button">Login</a>		
+            <?php if (isset($_SESSION['nombre_usuario']) && !empty($_SESSION['nombre_usuario'])) { ?>
+			<a href="cerrar.php" class="btn btn-danger navbar-btn" style="float:right" role="button">Logout</a>
+	<?php }
     ?>
 		  </div>
 		</nav>
@@ -74,61 +75,78 @@ session_start();
             $querynoticias="SELECT * FROM noticias WHERE noticias.usuario = (SELECT codigo FROM usuario WHERE nombre_usuario='$username')";
             // echo $querynoticias;
            
-            ?> <div id="formulario_administracion">
+            ?> 
+	<div id="formulario_administracion">
+	
     <form action="panel.php" method="post" name="filtro">
+	<center>
+	<table>
+	<tr>
         <?php $querypais="SELECT DISTINCT pais FROM noticias";
             $querynombre="SELECT DISTINCT nombre FROM noticias";
             $querycategoria="SELECT DISTINCT categoria FROM noticias";
             $conectpais=$conectar->prepare($querypais);
         $conectpais->execute();
             $conectpais->bind_result($pais2);
-        ?> <center><table><tr><td>
-        <select name="pais">
-            <option value="" selected>Filtro por país</option>
-        <?php 
-while ($conectpais->fetch()) {   
-?> 
-          <option value="<?php echo $pais2?>"><?php echo $pais2?></option> 
-          <?php 
-}  
-            $conectpais->close(); 
-            ?> </select>
-        </td>
-        <td><?php $conectnombre=$conectar->prepare($querynombre);
+        ?> 
+		<td>
+			<select class="form-control" id="sel1" name="pais">
+			<option value="" selected>Filtro por país</option>
+				<?php 
+				while ($conectpais->fetch()) 
+				{   
+					?> 
+					<option value="<?php echo $pais2?>"><?php echo $pais2?></option> 
+					<?php 
+				}  
+					$conectpais->close(); 
+				?> 
+			</select>
+        </td>		
+        <td>
+		<?php $conectnombre=$conectar->prepare($querynombre);
             $conectnombre->execute();
             $conectnombre->bind_result($nombre2);
-            ?> <select name="nombre">
-            <option value="" selected>Filtro por nombre</option>
-            <?php
-while ($conectnombre->fetch()) {
-    ?>
-            <option value="<?php echo $nombre2?>"><?php echo $nombre2?></option>
-            <?php
-}
-            $conectnombre->close();
-            ?>
-            </select>
+            ?> 
+			<select class="form-control" id="sel1" name="nombre">
+				<option value="" selected>Filtro por nombre</option>
+				<?php
+				while ($conectnombre->fetch()) {
+					?>
+				<option value="<?php echo $nombre2?>"><?php echo $nombre2?></option>
+				<?php
+	}
+				$conectnombre->close();
+				?>
+			</select>
         </td>
-        <td><?php $conectcategoria=$conectar->prepare($querycategoria);
+		
+		
+        <td>
+		<?php $conectcategoria=$conectar->prepare($querycategoria);
             $conectcategoria->execute();
             $conectcategoria->bind_result($categoria2);
-            ?> <select name="categoria">
+            ?> 
+			<select class="form-control" id="sel1" name="categoria">
             <option value="" selected>Filtro por categoría</option>
             <?php
-while ($conectcategoria->fetch()) {
-    ?>
+			while ($conectcategoria->fetch()) {
+			?>
             <option value"<?php echo $categoria2?>"><?php echo $categoria2?></option>
             <?php
-}
+			}
             $conectcategoria->close();
             ?>
-            </select>
-        
-        </td>
+        </select>
+        </td>        
         <td>
         <input type="submit" class="btn btn-success navbar-btn" value="Actualizar Filtro" name="actualizar" style="margin-top: 9%; margin-right: 4%; float: right">
         </td>
-        </tr></table></center></form>
+       
+	</tr>
+	</table>
+	</center>
+	</form>
     </div>
     <?php 
             $news=$conectar->prepare($querynoticias);
